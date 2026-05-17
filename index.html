@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio Builder</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="builder">
+
+    <!-- Left panel: form -->
+    <aside class="panel">
+      <div class="panel-header">
+        <h1>Portfolio Builder</h1>
+        <p>Fill in your details — preview updates live</p>
+      </div>
+
+      <div class="panel-body">
+
+        <div class="section-group">
+          <h3>Personal info</h3>
+          <label>Full name</label>
+          <input type="text" id="p-name" placeholder="Jane Smith" oninput="update()" />
+          <label>Job title</label>
+          <input type="text" id="p-title" placeholder="Frontend Developer" oninput="update()" />
+          <label>Short bio</label>
+          <textarea id="p-bio" rows="3" placeholder="I build fast, accessible web experiences..." oninput="update()"></textarea>
+          <label>Email</label>
+          <input type="email" id="p-email" placeholder="jane@example.com" oninput="update()" />
+          <label>GitHub URL</label>
+          <input type="text" id="p-github" placeholder="https://github.com/jane" oninput="update()" />
+          <label>LinkedIn URL</label>
+          <input type="text" id="p-linkedin" placeholder="https://linkedin.com/in/jane" oninput="update()" />
+        </div>
+
+        <div class="section-group">
+          <h3>Skills</h3>
+          <label>Skills (comma separated)</label>
+          <input type="text" id="p-skills" placeholder="HTML, CSS, JavaScript, React" oninput="update()" />
+        </div>
+
+        <div class="section-group">
+          <h3>Projects</h3>
+          <div id="projects-list"></div>
+          <button class="add-btn" onclick="addProject()">+ Add project</button>
+        </div>
+
+        <div class="section-group">
+          <h3>Theme</h3>
+          <label>Accent color</label>
+          <div class="color-pick-row">
+            <input type="color" id="p-color" value="#5a3fd6" oninput="update()" />
+            <span id="color-display">#5a3fd6</span>
+          </div>
+          <label>Layout style</label>
+          <select id="p-layout" onchange="update()">
+            <option value="minimal">Minimal</option>
+            <option value="bold">Bold hero</option>
+            <option value="card">Card grid</option>
+          </select>
+        </div>
+
+        <div class="section-group">
+          <button class="ai-bio-btn" onclick="improveBio()">AI — improve my bio</button>
+        </div>
+
+        <button class="export-btn" onclick="exportSite()">Export HTML file</button>
+
+      </div>
+    </aside>
+
+    <!-- Right panel: live preview -->
+    <main class="preview-pane">
+      <div class="preview-bar">
+        <span>Live preview</span>
+        <div class="device-btns">
+          <button onclick="setDevice('desktop')" id="btn-desktop" class="active">Desktop</button>
+          <button onclick="setDevice('tablet')"  id="btn-tablet">Tablet</button>
+          <button onclick="setDevice('mobile')"  id="btn-mobile">Mobile</button>
+        </div>
+      </div>
+      <div class="preview-frame-wrap" id="frame-wrap">
+        <iframe id="preview-frame" title="Portfolio preview"></iframe>
+      </div>
+    </main>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
